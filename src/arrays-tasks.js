@@ -20,8 +20,8 @@
  *    getIntervalArray(0, 100) => [ 0, 1, 2, ..., 100 ]
  *    getIntervalArray(3, 3) => [ 3 ]
  */
-function getIntervalArray(/* start, end */) {
-  throw new Error('Not implemented');
+function getIntervalArray(start, end) {
+  return Array.from({ length: 1 + (end - start) }, (_, i) => start + i);
 }
 
 /**
@@ -37,10 +37,26 @@ function getIntervalArray(/* start, end */) {
  *    sumArrays([10, 20, 30], [5, 10, 15]) => [15, 30, 45]
  *    sumArrays([-1, 0, 1], [1, 2, 3, 4]) => [0, 2, 4, 4]
  */
-function sumArrays(/* arr1, arr2 */) {
-  throw new Error('Not implemented');
+function sumArrays(arr1, arr2) {
+  const res = [arr1, arr2];
+  // let array1;
+  // let array2;
+  let result;
+  if (arr1.length === 0) {
+    return arr2;
+  }
+  if (arr2.length === 0) {
+    return arr1;
+  }
+  if (arr1.length === arr2.length) {
+    return arr1.map((el, i) => el + arr2[i]);
+  }
+  if (res[0] < res[1]) {
+    res[0].push(0);
+    result = res[0].map((el, i) => el + res[1][i]);
+  }
+  return result;
 }
-
 /**
  * Returns an index of the specified element in array or -1 if element is not found.
  *
