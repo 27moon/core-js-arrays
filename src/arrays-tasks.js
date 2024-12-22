@@ -279,9 +279,8 @@ function createNDimensionalArray(n, size) {
   if (n === 1) {
     return new Array(size).fill(0);
   }
-  return new Array(size)
-    .fill(0)
-    .map(() => createNDimensionalArray(n - 1, size));
+  const array = createNDimensionalArray(n - 1, size);
+  return new Array(size).fill(array);
 }
 
 /**
